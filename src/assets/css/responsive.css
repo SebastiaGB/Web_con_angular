@@ -1,0 +1,212 @@
+/* ================= GENERAL NAVBAR COLAPSADA ================= */
+.navbar.collapsed {
+  width: 60px;          
+  height: 60px;
+  border-radius: 50%;
+  left: 10px;          
+  top: 10px;            
+  padding: 0;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar.collapsed .navbar-left .navbar-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar.collapsed .navbar-left .logo,
+.navbar.collapsed .navbar-right {
+  display: none;
+}
+
+/* ================= TABLETS Y MÓVILES GRANDES (≤ 990px) ================= */
+@media screen and (max-width: 990px) {
+  /* Navbar */
+  .navbar {
+    width: 95%;
+    height: 60px;
+    padding: 0.5rem 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar-left .logo {
+    font-size: 2rem;
+  }
+
+  .navbar-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .navbar-right a {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 10rem 1rem 3rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 5rem;
+  }
+
+  /* Tarjetas */
+  .dios-card {
+    max-width: 220px;
+    padding: 1rem;
+  }
+
+  .img-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .dios-card h3 {
+    font-size: 1.4rem;
+  }
+
+  /* Contacto */
+  .contact-box {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .contact-text {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .contact-user-title {
+    font-size: 2rem;
+  }
+
+  .contact-text-item {
+    font-size: 1rem;
+  }
+
+  .contact-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Modal */
+  .modal {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  .modal-description p {
+    font-size: 1rem;
+  }
+
+  .modal-image img {
+    width: 120px;
+    height: auto;
+  }
+}
+
+/* ================= MÓVILES PEQUEÑOS (≤ 480px) ================= */
+@media screen and (max-width: 480px) {
+  /* Navbar */
+  .navbar {
+    width: 98%;
+    height: 50px;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .navbar-left .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-right a {
+    font-size: 0.8rem;
+    margin-left: 0.3rem;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Tarjetas */
+  .dios-card {
+    max-width: 180px;
+    padding: 0.8rem;
+  }
+
+  .dios-card h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Contacto */
+  .contact-box {
+    padding: 1rem;
+  }
+
+  .contact-user-title {
+    font-size: 1.5rem;
+  }
+
+  .contact-text-item {
+    font-size: 0.9rem;
+  }
+
+  .contact-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Modal */
+  .modal {
+    max-width: 95%;
+    padding: 0.8rem;
+  }
+
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .modal-description p {
+    font-size: 0.9rem;
+  }
+
+  .modal-image img {
+    width: 100px;
+    height: auto;
+  }
+}

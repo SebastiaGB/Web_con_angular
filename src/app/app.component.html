@@ -1,0 +1,88 @@
+<!-- Navbar -->
+<header class="navbar" 
+        [ngClass]="{'collapsed': hideNavbar}" 
+        (click)="hideNavbar ? scrollToTop() : null">
+  <div class="navbar-left">
+    <div class="navbar-icon-wrapper">
+      <img src="assets/image.png" alt="Logo" class="navbar-icon">
+    </div>
+    <h1 class="logo">MitologicCloud</h1>
+  </div>
+  <div class="navbar-right" *ngIf="!hideNavbar">
+    <a href="#contact">Mi historia</a>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero fade-in">
+  <div class="container text-center">
+    <h2 class="hero-title">
+      <span class="hero-part">Explora</span>
+      <span class="hero-highlight">los misterios</span><br>
+      <span class="hero-part">de la</span>
+      <span class="hero-highlight">Mitología</span>
+    </h2>
+    <p class="hero-subtitle">
+      Sumérgete en historias de dioses, héroes y criaturas épicas junto al Cloud
+    </p>
+
+    <!-- Hero Gallery -->
+    <div class="row justify-content-center">
+      <ng-container *ngFor="let character of characters">
+        <div class="col-md-4 col-sm-6 mb-4" *ngIf="character.tipo !== 'humano'">
+          <div class="dios-card-wrapper fade-in" (click)="openModal(character)">
+            <div class="dios-card">
+              <div class="img-wrapper">
+                <img [src]="character.img" [alt]="character.nombre" loading="lazy" class="img-fluid">
+              </div>
+              <h3>{{ character.nombre }}</h3>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <div class="container contact-box d-flex align-items-center">
+    <div class="contact-img-wrapper" (click)="openHumanModal()">
+      <img src="assets/images/yo.avif" alt="Contacto" class="contact-img rounded-circle">
+    </div>
+
+    <div class="contact-text ms-4">
+      <h1 class="contact-user-title mb-4">Sebastià Gamundí</h1>
+      <p class="contact-text-item contact-item">Telematics Engineer</p>
+      <p class="contact-text-item contact-item">
+        ¡Gracias por visitar MitologicCloud!<br>
+        Si quieres descubrir más secretos mitológicos,<br>
+        puedes aprender conmigo en el campo de Cloud Computing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Generic Modal -->
+<div class="modal-backdrop" *ngIf="selectedCharacter" (click)="closeModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <span class="close-btn" (click)="closeModal()">×</span>
+
+    <h2 class="modal-title">
+      <i *ngIf="selectedCharacter.iconClass"
+         [class]="selectedCharacter.iconClass"
+         [style.color]="selectedCharacter.iconColor"
+         style="margin-right:10px;"></i>
+      {{ selectedCharacter.titulo }}
+    </h2>
+
+    <div class="modal-content">
+      <div class="modal-image">
+        <img [src]="selectedCharacter.img" [alt]="selectedCharacter.nombre">
+      </div>
+      <div class="modal-description">
+        <p>{{ selectedCharacter.descripcion }}</p>
+      </div>
+    </div>
+  </div>
+</div>

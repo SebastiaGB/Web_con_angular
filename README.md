@@ -31,12 +31,12 @@ Ejecutar ng build para generar la carpeta dist, que contendrá los archivos list
 
 ### 2. Compra del dominio en Route 53
 
-En primer lugar, se adquiere un dominio público en Route 53 ,en este caso, 'mitologiccloud.com'.
+En primer lugar, se adquiere un dominio público en Route 53 ,en este caso, `mitologiccloud.com`.
 Al completar la compra, AWS crea automáticamente una zona hospedada asociada al dominio, donde se gestionarán los registros DNS.
 
 ### 3. Creación del bucket S3
 
-Crear un bucket en Amazon S3 con el mismo nombre que el dominio 'mitologiccloud.com', ya que en caso contrario no funcionará.
+Crear un bucket en Amazon S3 con el mismo nombre que el dominio `mitologiccloud.com`, ya que en caso contrario no funcionará.
 
 En un primer momento, se permite el acceso público para verificar el funcionamiento.
 
@@ -78,9 +78,9 @@ Una vez validado, adjuntar el certificado a la distribución de CloudFront para 
 
 Crear un registro tipo A (Alias) que apunte a la distribución de CloudFront, usando el dominio principal mitologiccloud.com.
 
-Crear un bucket adicional llamado 'www.mitologiccloud.com', habilitar el alojamiento de sitio web estático y configurar la redirección hacia mitologiccloud.com.
+Crear un bucket adicional llamado `www.mitologiccloud.com`, habilitar el alojamiento de sitio web estático y configurar la redirección hacia mitologiccloud.com.
 
-Crear un segundo registro tipo A para 'www.mitologiccloud.com', apuntando al bucket S3 configurado como redirección hacia el dominio principal.
+Crear un segundo registro tipo A para `www.mitologiccloud.com`, apuntando al bucket S3 configurado como redirección hacia el dominio principal.
 
 Alternativamente, podría haberse usado un registro CNAME, pero el tipo Alias es la opción recomendada por AWS para dominios raíz.
 

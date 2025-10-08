@@ -78,9 +78,9 @@ Una vez validado, adjuntar el certificado a la distribución de CloudFront para 
 
 Crear un registro tipo A (Alias) que apunte a la distribución de CloudFront, usando el dominio principal mitologiccloud.com.
 
-Crear un bucket adicional llamado www.mitologiccloud.com, habilitar el alojamiento de sitio web estático y configurar la redirección hacia mitologiccloud.com.
+Crear un bucket adicional llamado 'www.mitologiccloud.com', habilitar el alojamiento de sitio web estático y configurar la redirección hacia mitologiccloud.com.
 
-Crear un segundo registro tipo A para www.mitologiccloud.com, apuntando al bucket S3 configurado como redirección hacia el dominio principal.
+Crear un segundo registro tipo A para 'www.mitologiccloud.com', apuntando al bucket S3 configurado como redirección hacia el dominio principal.
 
 Alternativamente, podría haberse usado un registro CNAME, pero el tipo Alias es la opción recomendada por AWS para dominios raíz.
 

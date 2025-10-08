@@ -1,6 +1,11 @@
-# Proyecto: Despliegue de aplicación web Angular en AWS con ECS y CloudFront
+# Proyecto: Despliegue de aplicación web Angular en AWS.
 
-El objetivo del proyecto es desplegar una aplicación web desarrollada con Angular en AWS mediante CloudFront.
+---
+Puedes acceder a la versión en vivo del sitio web aquí:  
+[https://mitologiccloud.com](https://mitologiccloud.com)
+---
+
+El objetivo del proyecto es desplegar una WebApp alojada en S3 y distribuirla globalmente mediante CloudFront.
 
 Se utilizan los siguientes recursos principales:
 
@@ -8,11 +13,11 @@ Se utilizan los siguientes recursos principales:
 
 * **CloudFront**: distribución global de contenido, con certificado SSL gestionado en **AWS Certificate Manager** para navegación segura en HTTPS.
 
-* **Route 53**: gestión de dominio y creación de una zona de alojamiento personalizada.## Demo en línea
+* **Route 53**: gestión de dominio y creación de una zona de alojamiento personalizada.
 
----
-Puedes acceder a la versión en vivo del sitio web aquí:  
-[https://mitologiccloud.com](https://mitologiccloud.com)
+
+
+
 
 ---
 ### Créditos

@@ -17,27 +17,74 @@ Se utilizan los siguientes recursos principales:
 
 ---
 
-## Despliegue de Web con Angular
+### 1. Preparación del proyecto Angular
 
-Los passos a seguir són los siguientes: 
-- instalar angular desde github
-- usar npm install para instsalar las dependencias y modulos necesarios
-- usar ng serve para ejecutar el servidor y poderla lanzar de forma local
-- ejecutar ng build para construir la crpeta dist, que es la que se subirá a S3.
+Los pasos iniciales son los siguientes:
 
-## Compra de dominio Route 53
+Descargar Angular.
 
-En primer lugar se deberá comprar unn dominio público 'mitologiccloud.com' en nuestro caso que se alojará automaticamente en una zona hospedada.
+Ejecutar npm install para instalar todas las dependencias y módulos necesarios.
 
-## Creación S3 
+Lanzar el servidor local con ng serve para verificar que la aplicación funciona correctamente.
 
-Se crea un bucket s3 con el mismo nombre que el dominio para que funcione en caso contrario no funcionará y se permite en primer lugar el acceso público. Entocnes se sube los archivos de la carpeta dist y se crean los permisos para poder obtener objetos , la política mediante IAM en el bucket. Se habilita el alojamiento de web estático y con el dns es posible acceder al sitio web.
+Ejecutar ng build para generar la carpeta dist, que contendrá los archivos listos para despliegue en S3.
 
-## Distribución CloudFront
+### 2. Compra del dominio en Route 53
 
+En primer lugar, se adquiere un dominio público en Route 53 ,en este caso, 'mitologiccloud.com'.
+Al completar la compra, AWS crea automáticamente una zona hospedada asociada al dominio, donde se gestionarán los registros DNS.
 
+### 3. Creación del bucket S3
 
+Crear un bucket en Amazon S3 con el mismo nombre que el dominio 'mitologiccloud.com', ya que en caso contrario no funcionará.
+
+En un primer momento, se permite el acceso público para verificar el funcionamiento.
+
+Subir los archivos de la carpeta dist al bucket.
+
+Configurar una política de bucket  mediante IAM para permitir el acceso a los objetos.
+
+Habilitar la opción de alojamiento de sitio web estático.
+
+Con esto, es posible acceder al sitio web mediante la URL pública de S3.
+
+### 4. Configuración de CloudFront
+
+A continuación, se crea una distribución de CloudFront para obtener acceso global y habilitar HTTPS.
+
+Pasos principales:
+
+Seleccionar el bucket S3 como origen.
+
+Crear un Origin Access Control (OAC) adaptado al bucket, y actualizar la política de S3 para que CloudFront sea el único con acceso.
+
+Redirigir el tráfico HTTP a HTTPS.
+
+(Opcional) Activar AWS WAF como firewall de aplicación (no implementado en esta demo por costes).
+
+Especificar el archivo index.html como objeto principal.
+
+Una vez verificado el correcto acceso a través de CloudFront, bloquear el acceso público del bucket S3, permitiendo únicamente las solicitudes desde CloudFront.
+
+### 5. Certificado SSL en AWS Certificate Manager (ACM)
+
+Solicitar un certificado público para el dominio mitologiccloud.com.
+
+Validar el certificado mediante DNS validation agregando los registros generados por ACM en la zona hospedada de Route 53.
+
+Una vez validado, adjuntar el certificado a la distribución de CloudFront para habilitar HTTPS.
+
+### 6. Configuración de registros en Route 53
+
+Crear un registro tipo A (Alias) que apunte a la distribución de CloudFront, usando el dominio principal mitologiccloud.com.
+
+Crear un bucket adicional llamado www.mitologiccloud.com, habilitar el alojamiento de sitio web estático y configurar la redirección hacia mitologiccloud.com.
+
+Crear un segundo registro tipo A para www.mitologiccloud.com, apuntando al bucket S3 configurado como redirección hacia el dominio principal.
+
+Alternativamente, podría haberse usado un registro CNAME, pero el tipo Alias es la opción recomendada por AWS para dominios raíz.
 
 ---
+
 ### Créditos
 Proyecto desarrollado como parte del bootcamp **AWS DevOps & Cloud Computing de Blockstellar**.
